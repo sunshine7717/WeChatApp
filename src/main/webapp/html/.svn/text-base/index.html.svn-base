@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<title>首页</title>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	
+	</head>
+
+	<body id="body">
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-home-filled mui-pull-left" href="index.html"></a>
+			<h1 class="mui-title">爱吆蛋糕</h1>
+		</header>
+		<!-- 轮播图 -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"></div>
+				<div class="swiper-slide"></div>
+				<div class="swiper-slide"></div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<!-- nav -->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="index.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="products.html">
+				<span class="mui-icon mui-icon-list"></span>
+				<span class="mui-tab-label">所有蛋糕</span>
+			</a>
+			<a class="mui-tab-item" href="personal_center.html">
+				<span class="mui-icon mui-icon-person-filled"></span>
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+			<!--<a class="mui-tab-item" href="cart.html">-->
+				<!--<span class="mui-icon-extra  reset mui-icon-extra-cart"><span class="mui-badge count">0</span></span>-->
+				<!--<span class="mui-tab-label cart">购物车</span>-->
+			<!--</a>-->
+			<a class="mui-tab-item" href="myorders.html">
+				<span class="mui-icon-extra  reset mui-icon-extra-cart"></span>
+				<span class="mui-tab-label cart">我的订单</span>
+			</a>
+
+		</nav>
+	<!---开始添加--->
+		<!--- 商品分类---->
+		<ul class="typeList"> </ul>
+	<!----添加结束---->
+		<!-- 商品信息 -->
+		<ul class="cakeList"></ul>
+
+	</body>
+	<script src="js/swiper-3.4.2.min.js" charset="utf-8"></script>
+
+	<script src="js/SwiperConfig.js" charset="utf-8"></script>
+	<script src="js/function.js"></script>
+	<!---开始添加--->
+	<script src="js/functiontype.js"></script>
+	<!----添加结束---->
+	<script src="js/jQuery.js"></script>
+	<script>
+	    ajax('selectAllPro',function(res){
+	    		setScorllImg(res);
+             setProductsFlow(res);
+	    })
+		
+
+	</script>
+	<!---开始添加--->
+	<script>
+ 	    ajax('selectType',function(res){
+          setTypesFlow(res);
+ 	    })
+	</script>
+	
+
+
+</html>

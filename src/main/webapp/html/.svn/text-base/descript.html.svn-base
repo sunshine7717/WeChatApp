@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<title></title>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+	</head>
+	<body>
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:window.history.back()"></a>
+			<h1 class="mui-title">爱幼蛋糕</h1>
+		</header>
+		
+		<ul class="mui-content list">
+			<div class="mui-card">
+				<div class="mui-card-header mui-card-media">
+					<div class="mui-media-body" style="margin-left: 0; font-size: 16px;">
+						商品详情
+					</div>
+				</div>
+				<div class="mui-card-content" >
+					<img class="pic" src="" alt="" width="100%">
+				</div>
+				<div class="mui-card-footer flexFlow">
+					<span class="productName"></span>
+					<span class="descript"></span>
+				</div>
+			</div>
+			<div class="mui-card">
+				<div class="mui-card-header"></div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<div style="text-align:left">口味:奶油草莓</div>
+						<div style="text-align:left">适合人群:奶油草莓</div>
+						<div style="text-align:left">保险条件:奶油草莓</div>
+						<div style="text-align:left">原材料:奶油草莓第三方士大夫设定</div>
+					</div>
+				</div>
+				<div class="mui-card-footer">
+					<p>
+						现在订购最早<span style="color:red">明天10点配送</span>
+					</p>
+					<p>
+						每日最晚配送时间<span style="color:lightseagreen">19:00</span>
+					</p>
+				</div>
+			</div>
+			
+		</ul>
+		
+		<!--nav-->
+		<nav class="mui-bar mui-bar-tab">
+			
+			<a class="mui-tab-item mui-active" href="#tabbar-with-contact">
+				<h2>￥<span class="price"></span></span></h2>
+			</a>
+			<a class="mui-tab-item mui-button mui-badge-danger" href="#tabbar-with-map">
+			    <h4 style="color: white;">加入购物车</h4>
+			</a>
+			<a class="mui-tab-item mui-button mui-badge-warning" href="#tabbar-with-chat" id="paynow">
+				<h4 style="color: white;">立即购买</h4>
+			</a>
+
+		</nav>
+
+
+	</body>
+	<script src="js/function.js"></script>
+	<script src="js/jQuery.js"></script>
+	<script>
+		var str = window.location.href;
+		var temp = str.split("?");
+		var temp1 = temp[1].split("=");
+		var temp2 = temp1[1].split("#");
+		var id = temp2[0];
+		window.sessionStorage["id"] = id;
+		console.log(id)
+		setAll(id);
+
+	</script>
+
+</html>

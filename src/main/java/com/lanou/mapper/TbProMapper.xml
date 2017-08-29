@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.TbProMapper">
+	<resultMap id="BaseResultMap" type="com.lanou.bean.TbPro">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="pro_name" jdbcType="VARCHAR" property="proName" />
+		<result column="type_id" jdbcType="INTEGER" property="typeId" />
+		<result column="pro_url" jdbcType="VARCHAR" property="proUrl" />
+		<result column="pro_info" jdbcType="VARCHAR" property="proInfo" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, pro_name, type_id, pro_url, pro_info
+	</sql>
+	<select id="selectPro" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tb_pro
+	</select>
+	
+	<select id="selectProType" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from tb_pro where type_id = #{typeId,jdbcType=INTEGER}
+	</select>
+	
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tb_pro
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from tb_pro
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.lanou.bean.TbPro">
+		insert into tb_pro (id,
+		pro_name, type_id,
+		pro_url, pro_info)
+		values (#{id,jdbcType=INTEGER},
+		#{proName,jdbcType=VARCHAR},
+		#{typeId,jdbcType=INTEGER},
+		#{proUrl,jdbcType=VARCHAR}, #{proInfo,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.lanou.bean.TbPro">
+		insert into tb_pro
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="proName != null">
+				pro_name,
+			</if>
+			<if test="typeId != null">
+				type_id,
+			</if>
+			<if test="proUrl != null">
+				pro_url,
+			</if>
+			<if test="proInfo != null">
+				pro_info,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="proName != null">
+				#{proName,jdbcType=VARCHAR},
+			</if>
+			<if test="typeId != null">
+				#{typeId,jdbcType=INTEGER},
+			</if>
+			<if test="proUrl != null">
+				#{proUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="proInfo != null">
+				#{proInfo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.lanou.bean.TbPro">
+		update tb_pro
+		<set>
+			<if test="proName != null">
+				pro_name = #{proName,jdbcType=VARCHAR},
+			</if>
+			<if test="typeId != null">
+				type_id = #{typeId,jdbcType=INTEGER},
+			</if>
+			<if test="proUrl != null">
+				pro_url = #{proUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="proInfo != null">
+				pro_info = #{proInfo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.lanou.bean.TbPro">
+		update tb_pro
+		set
+		pro_name = #{proName,jdbcType=VARCHAR},
+		type_id =
+		#{typeId,jdbcType=INTEGER},
+		pro_url = #{proUrl,jdbcType=VARCHAR},
+		pro_info = #{proInfo,jdbcType=VARCHAR}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+</mapper>

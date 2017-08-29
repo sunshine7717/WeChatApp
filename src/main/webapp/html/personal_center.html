@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,
+target-densitydpi=device-dpi " />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>个人中心</title>
+<link rel="stylesheet" href="/Mobile_web/css/swiper-3.4.2.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/Mobile_web/css/icons-extra.css" />
+<link rel="stylesheet" type="text/css"
+	href="/Mobile_web/css/mui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/index.css" />
+<script src="/Mobile_web/js/agent.js"></script>
+<script src="/Mobile_web/js/jQuery.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"
+	charset="utf-8"></script>
+</head>
+
+<body id="body">
+	<!-- 头部 -->
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-home-filled mui-pull-left"
+			href="javascript:window.history.back()"></a>
+		<h1 class="mui-title">个人中心</h1>
+	</header>
+
+	<div class="mui-page-content" style="margin-top: 60px;">
+		<!--用户信息-->
+		<ul class="mui-table-view mui-table-view-chevron">
+			<li class="mui-table-view-cell mui-media"><a
+				class="mui-navigate-right " style="padding: 15px;" href="#account">
+					<div class="mui-media-body mui-text-left">
+						<div class="nickname mui-text-left line-height" id="wxname">用户：</div>
+					</div>
+			</a></li>
+		</ul>
+
+		<!--待付款订单-->
+		<ul class="mui-table-view mui-table-view-chevron margin-top">
+
+			<!--<li class="mui-table-view-cell">-->
+			<!--<a href="#notifications" class="mui-navigate-right">待付订单</a>-->
+			<!--</li>-->
+			<li class="mui-table-view-cell"><a
+				href="/Mobile_web/html/myorders.html" class="mui-navigate-right">全部订单</a>
+			</li>
+			<li class="mui-table-view-cell"><a
+				href="/Mobile_web/html/master_address.html"
+				class="mui-navigate-right" id="aaaa">地址管理</a></li>
+
+
+			<!--开始添加--->
+			<li class="mui-table-view-cell"><a
+				href="/Mobile_web/html/my_information.html"
+				class="mui-navigate-right">个人信息</a></li>
+			<li class="mui-table-view-cell" onclick="tuichu()"><a
+				class="mui-navigate-right">退出登录</a></li>
+			<!--添加结束-->
+		</ul>
+
+	</div>
+
+
+
+
+
+
+
+
+	<!-- nav -->
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item" href="/Mobile_web/html/index.html"> <span
+			class="mui-icon mui-icon-home"></span> <span class="mui-tab-label">首页</span>
+		</a> <a class="mui-tab-item" href="/Mobile_web/html/products.html"> <span
+			class="mui-icon mui-icon-list"></span> <span class="mui-tab-label">所有蛋糕</span>
+		</a> <a class="mui-tab-item mui-active" href="#tabbar-with-map"> <span
+			class="mui-icon mui-icon-person-filled"></span> <span
+			class="mui-tab-label ">个人中心</span>
+		</a> <a class="mui-tab-item" href="/Mobile_web/html/myorders.html"> <span
+			class="mui-icon-extra  reset mui-icon-extra-cart"></span> <span
+			class="mui-tab-label cart">我的订单</span>
+		</a>
+		<!--<a class="mui-tab-item" href="cart.html">-->
+		<!--<span class="mui-icon-extra  reset mui-icon-extra-cart"><span class="mui-badge count">0</span></span>-->
+		<!--<span class="mui-tab-label cart">购物车</span>-->
+		<!--</a>-->
+
+	</nav>
+
+
+</body>
+<script src="/Mobile_web/js/swiper-3.4.2.min.js" charset="utf-8"></script>
+
+<script src="/Mobile_web/js/SwiperConfig.js" charset="utf-8"></script>
+<script src="/Mobile_web/js/function.js"></script>
+<script src="/Mobile_web/js/jQuery.js"></script>
+<script src="/Mobile_web/js/agent.js"></script>
+
+<script>
+	$.ajax({
+		url : "/Mobile_web/getname",
+		type : "get",
+		success : function(data) {
+
+			console.log(data)
+			var userId = data.userId
+			console.log(userId)
+			$("#wxname")[0].innerText = "用户：" + data.name;
+			var aaherf="/Mobile_web/html/master_address.html?id="+userId;
+			$("#aaaa").attr("href",aaherf);
+
+		}
+	});
+	function tuichu() {
+		$.ajax({
+			url : "/Mobile_web/logout",
+			type : 'get',
+			success : function(data) {
+				if (data.state == 1) {
+					alert(data.data);
+					window.location.href = "/Mobile_web/html/index.html"
+				} else if (data.state == 0) {
+
+					alert(data.data)
+				}
+
+			}
+		})
+	}
+</script>
+
+</html>

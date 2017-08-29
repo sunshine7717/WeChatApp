@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+		<title>所有蛋糕</title>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+	   <!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-home-filled mui-pull-left" href="index.html"></a>
+			<h1 class="mui-title">爱呦蛋糕</h1>
+		</header>
+
+		<!--所有商品-->
+		
+		<ul class="mui-content list">
+			
+			
+		</ul>
+		
+		<!--nav-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item " href="index">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="#tabbar-with-contact" href="products.html">
+				<span class="mui-icon mui-icon-list"></span>
+				<span class="mui-tab-label">所有蛋糕</span>
+			</a>
+			<a class="mui-tab-item" href="personal_center.html">
+				<span class="mui-icon mui-icon-person-filled"></span>
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+			<!--<a class="mui-tab-item" href="cart.html">-->
+				<!--<span class="mui-icon-extra  reset mui-icon-extra-cart"><span class="mui-badge count">0</span></span>-->
+				<!--<span class="mui-tab-label cart">购物车</span>-->
+			<!--</a>-->
+
+			<a class="mui-tab-item" href="myorders.html">
+				<span class="mui-icon-extra  reset mui-icon-extra-cart"></span>
+				<span class="mui-tab-label cart">我的订单</span>
+			</a>
+
+		</nav>
+	</body>
+		<script src="js/function.js"></script>
+	<script>
+	/* 设置所有商品 */
+		ajax('selectAllPro',function(res){
+			setAll(res);
+		});
+	</script>
+
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,
+target-densitydpi=device-dpi " />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>个人中心</title>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/agent.js"></script>
+		<script src="js/jQuery.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" charset="utf-8"></script>
+	</head>
+
+	<body id="body">
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-home-filled mui-pull-left" href="javascript:window.history.back()"></a>
+			<h1 class="mui-title">个人中心</h1>
+		</header>
+		
+		<div class="mui-page-content" style="margin-top: 60px;">
+			<!--用户信息-->
+			<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell mui-media">
+								<a class="mui-navigate-right " style="padding: 15px;" href="#account">
+									<img class="mui-media-object mui-pull-left head-img" id="head-img" src="../img/pic.png" style="max-width: 100px;height: 100px;" >
+									<div class="mui-media-body mui-text-left">
+										<div class="nickname mui-text-left line-height" id="wxname">张三</div>
+										<p class="mui-ellipsis mui-text-left line-height">账号类型:普通会员</p>
+										<p class="mui-ellipsis mui-text-left line-height">余额: <span class="text-red" id="banni">（¥0）</span></p>
+										<button class="btn btn-small mui-btn-primary" onclick="bebussness()">成为商家</button>
+										<button class="btn mui-btn-danger" onclick="beagent()">成为代理</button>
+									</div>
+								</a>
+							</li>
+						</ul>
+			
+			<!--待付款订单-->
+			<ul class="mui-table-view mui-table-view-chevron margin-top">
+							
+							<!--<li class="mui-table-view-cell">-->
+								<!--<a href="#notifications" class="mui-navigate-right">待付订单</a>-->
+							<!--</li>-->
+							<li class="mui-table-view-cell">
+								<a href="./myorders.html" class="mui-navigate-right" >全部订单</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="master_address.html" class="mui-navigate-right">地址管理</a>
+							</li>
+
+							<li class="mui-table-view-cell" onclick="tuiguang()">
+								<a class="mui-navigate-right" >推广链接</a>
+							</li>
+							<!--开始添加--->	
+							<li class="mui-table-view-cell">
+								<a href="my_information.html" class="mui-navigate-right" >个人信息</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="my_money.html" class="mui-navigate-right">我的钱包</a>
+							</li>
+							<!--添加结束-->
+						</ul>
+		
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- nav -->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="index.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="products.html">
+				<span class="mui-icon mui-icon-list"></span>
+				<span class="mui-tab-label">所有蛋糕</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-person-filled"></span>
+				<span class="mui-tab-label ">个人中心</span>
+			</a>
+			<a class="mui-tab-item" href="myorders.html">
+				<span class="mui-icon-extra  reset mui-icon-extra-cart"></span>
+				<span class="mui-tab-label cart">我的订单</span>
+			</a>
+			<!--<a class="mui-tab-item" href="cart.html">-->
+				<!--<span class="mui-icon-extra  reset mui-icon-extra-cart"><span class="mui-badge count">0</span></span>-->
+				<!--<span class="mui-tab-label cart">购物车</span>-->
+			<!--</a>-->
+
+		</nav>
+		
+
+	</body>
+	<script src="js/swiper-3.4.2.min.js" charset="utf-8"></script>
+
+	<script src="js/SwiperConfig.js" charset="utf-8"></script>
+	<script src="js/function.js"></script>
+	<script src="js/jQuery.js"></script>
+	<script src="js/agent.js"></script>
+
+	<script>
+
+		$.ajax({
+			url:"http://bgaiyaowai.com/wx/b520/php/controller/users.php?type=getself",
+			type:"get",
+			success:function(data) {
+				var res = $.parseJSON(data);
+				$("#wxname")[0].innerText = res.username;
+				$("#head-img")[0].src = res.headimg;
+			}
+		});
+
+		$.ajax({
+			url:"http://bgaiyaowai.com/wx/b520/php/controller/personagent.php?type=getMyself",
+			type:"get",
+			success:function(data) {
+				var res = $.parseJSON(data);
+				$("#banni")[0].innerText = res[0].banni + "元";
+			}
+		});
+	</script>
+
+</html>

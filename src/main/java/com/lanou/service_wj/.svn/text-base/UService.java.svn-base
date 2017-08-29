@@ -1,0 +1,60 @@
+package com.lanou.service_wj;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
+import com.lanou.bean.TbPro;
+import com.lanou.bean.TbSize;
+import com.lanou.bean.TbType;
+import com.lanou.mapper.TbProMapper;
+import com.lanou.mapper.TbSizeMapper;
+import com.lanou.mapper.TbTypeMapper;
+
+@Service
+public class UService implements IUService {
+
+	@Resource
+	TbProMapper proMapper;
+
+	@Resource
+	TbTypeMapper typeMapper;
+
+	@Resource
+	TbSizeMapper sizeMapper;
+
+	int proId;
+
+	public List<TbPro> selectAllPro() {
+		List<TbPro> list = proMapper.selectPro();
+		return list;
+	}
+
+	public List<TbType> selectAllType() {
+		List<TbType> list = typeMapper.selectType();
+		return list;
+	}
+
+	public List<Object> selectProById(Integer id) {
+
+		List<TbPro> tbpro = proMapper.selectByPrimaryKey(id);
+		for (int i = 0; i < tbpro.size(); i++) {
+			proId = tbpro.get(i).getId();
+		}
+		List<TbSize> tbsize = sizeMapper.selectPriceBy(proId);
+		for (int i = 0; i < tbsize.size(); i++) {
+
+			String a = tbsize.get(i).getSizePrice();
+		}
+		List<Object> list = new ArrayList<Object>();
+		list.add(tbpro);
+		list.add(tbsize);
+		List<Object> list1 = new ArrayList<Object>();
+		list1.add(list);
+		return list1;
+	}
+
+}

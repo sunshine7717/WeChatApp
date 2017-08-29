@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" href="/Mobile_web/css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.picker.css"/>
+		<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.poppicker.css"/>
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:window.history.back()"></a>
+			<h1 class="mui-title mui-text-left">修改收货地址</h1>
+		</header>
+
+		<ul class="mui-card" style="margin-top: 80px;">
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">收货人：</label>
+					<input style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="姓名">
+				</div>
+			</div>
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">手机号码：</label>
+					<input style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="中国大陆86+">
+				</div>
+			</div>
+			<div class="mui-card-footer" id="showCityPicker3">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">所在地区：</label>
+					<input id="cityResult3" style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="点击选择地区">
+				</div>
+			</div>
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">详细地址：</label>
+					<input style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="例如：陕西省西安市雁塔区">
+				</div>
+			</div>
+
+		</ul>
+
+		<!--nav-->
+		<button class=" mui-bar-tab btn mui-btn-primary">
+			保存
+		</button>
+		
+
+	</body>
+	<script src="/Mobile_web/js/function.js"></script>
+	<script src="js/mui.min.js"></script>
+		<!--<script src="../js/mui.picker.min.js"></script>-->
+		<script src="/Mobile_web/js/mui.picker.js"></script>
+		<script src="/Mobile_web/js/mui.poppicker.js"></script>
+		<script src="/Mobile_web/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+		
+					//级联示例
+					var cityPicker3 = new $.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = doc.getElementById('showCityPicker3');
+					var cityResult3 = doc.getElementById('cityResult3');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							cityResult3.value = (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;				  
+						});
+					}, false);
+				});
+			})(mui, document);
+		</script>
+	</html>

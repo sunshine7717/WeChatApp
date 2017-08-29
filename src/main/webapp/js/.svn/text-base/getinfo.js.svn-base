@@ -1,0 +1,42 @@
+/**
+ * Created by liguocheng on 2017/4/18.
+ */
+
+
+var localid;
+function loadData() {
+    $.ajax({
+        url:"http://bgaiyaowai.com/wx/b520/php/controller/address.php?type=getdefaut",
+        type:"get",
+        success:function(data) {
+            var res = $.parseJSON(data);
+            if(res.r_name == 'undefined') {
+                return false;
+            }
+            $('#buy_user')[0].innerText = res.r_name;
+            $('#buy_user_phone')[0].innerText = res.phone;
+            $('#buy_user_address')[0].innerText = res.address;
+            window.sessionStorage["localid"] = res.id;
+        }
+    });
+}
+
+
+
+function loadProductData(id) {
+    $.ajax({
+        url:'http://bgaiyaowai.com/wx/b520/php/controller/product.php?type=getOne&id='+ id,
+        type:"get",
+        success:function(data) {
+            var res = $.parseJSON(data);
+            $("#p_pri")[0].innerText = res.p_pri;
+            $("#totle_price")[0].innerText = res.p_pri;
+            $("#final_price")[0].innerText = res.p_pri;
+            $("#p_pic")[0].src = res.p_pic;
+            $("#p_info")[0].innerText = res.p_info;
+            //payAction(res.p_pri,res.p_id,localid);
+        }
+    });
+}
+
+

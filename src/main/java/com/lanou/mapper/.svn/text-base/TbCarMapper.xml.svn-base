@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.TbCarMapper">
+  <resultMap id="BaseResultMap" type="com.lanou.bean.TbCar">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="size_id" jdbcType="INTEGER" property="sizeId" />
+    <result column="pro_num" jdbcType="VARCHAR" property="proNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, pro_id, size_id, pro_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_car
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_car
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanou.bean.TbCar">
+    insert into tb_car (id, user_id, pro_id, 
+      size_id, pro_num)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{proId,jdbcType=INTEGER}, 
+      #{sizeId,jdbcType=INTEGER}, #{proNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lanou.bean.TbCar">
+    insert into tb_car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="proId != null">
+        pro_id,
+      </if>
+      <if test="sizeId != null">
+        size_id,
+      </if>
+      <if test="proNum != null">
+        pro_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="sizeId != null">
+        #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="proNum != null">
+        #{proNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lanou.bean.TbCar">
+    update tb_car
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null">
+        pro_id = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="sizeId != null">
+        size_id = #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="proNum != null">
+        pro_num = #{proNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lanou.bean.TbCar">
+    update tb_car
+    set user_id = #{userId,jdbcType=INTEGER},
+      pro_id = #{proId,jdbcType=INTEGER},
+      size_id = #{sizeId,jdbcType=INTEGER},
+      pro_num = #{proNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

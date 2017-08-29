@@ -1,0 +1,6 @@
+jabc_driver=com.mysql.jdbc.Driver
+jabc_url=jdbc:mysql://localhost:3306/project_cp?useSSL=true
+jabc_username=root
+jabc_password=123456
+
+mysqlClassPath=D:/Program Files (x86)/mavenLib/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar

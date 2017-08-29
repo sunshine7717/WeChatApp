@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<title></title>
+		<link rel="stylesheet" href="../css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:window.history.back()"></a>
+			<h1 class="mui-title mui-text-left">收货地址管理</h1>
+		</header>
+
+		<ul class="mui-content list">
+
+
+				
+				
+		</ul>
+
+		<!--nav-->
+		<button class=" mui-bar-tab btn mui-btn-danger createNew" style="position: fixed; bottom: 0;">
+			+新建地址
+		</button>
+
+	</body>
+	<script src="../js/function.js"></script>
+	<script src="../js/address.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jQuery.js"></script>
+	<script src="../js/getinfo.js"></script>
+	<script>
+	   document.querySelector('.createNew').onclick = function(){
+	   	    window.location.href = "new_address.html";
+	   }
+	   getAllAddress();
+	</script>
+
+</html>

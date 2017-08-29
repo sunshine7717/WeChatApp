@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>注册页面</title>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<link href="/Mobile_web/css/register1.css" type="text/css" rel="stylesheet">
+		<link href="/Mobile_web/css/global.css" type="text/css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div id="layout">
+			<span>注册</span>
+			<ul>
+				<p id="err_msg"></p>
+				<li><i class="un"><img src="/Mobile_web/img/user_name.png"></i><input id="username" class="username" type="text" placeholder="请输入用户名" /></li>
+
+				<li><i class="pw"><img src="/Mobile_web/img/pwd.png"></i><input id="pwd" class="pwd" type="password" placeholder="请输入密码" /></li>
+				<li><i class="pw2"><img src="/Mobile_web/img/pwd.png"></i><input id="infoname" class="yzm" type="text" placeholder="请输入真实姓名" /></li>
+				<li><i class="yz"><img src="/Mobile_web/img/msg.png"></i><input id="idcard" class="yzm" type="text" placeholder="请输入身份证" /></li>
+				<li><i class="pw2"><img src="/Mobile_web/img/pwd.png"></i><input id="phone" class="yzm" type="text" placeholder="请输入电话" /></li>
+			</ul>
+			<div class="reg_btn">
+				<button class="submit" type="button" onclick="register()">注册</button>
+				<a href="/Mobile_web/html/login1.html">
+					<div class="reg-login">
+						<p>已有帐号，立即登陆</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="/Mobile_web/js/jQuery.js"></script>
+	<script type="text/javascript">
+		function register() {
+			var username = document.getElementById("username");
+			var pwd = document.getElementById("pwd");
+			var infoname = document.getElementById("infoname");
+			var idcard = document.getElementById("idcard");
+			var phone = document.getElementById("phone");
+			if(username.value == '' || username.value == null) {
+				alert("请输入用户名");
+				return false;
+			} else if(pwd.value == '' || pwd.value == null) {
+				alert("请输入密码");
+				return false;
+			} else if(infoname.value == '' || infoname.value == null) {
+				alert("请输入真实姓名");
+				return false;
+			} else if(idcard.value == '' || idcard.value == null) {
+				alert("请输入身份证号码");
+				return false;
+			} else if(phone.value == '' || phone.value == null) {
+				alert("请输入电话号码");
+				return false;
+			}
+			console.log(pwd.value);
+
+			$.ajax({
+				type: "get",
+				url: "/Mobile_web/register",
+				data: {
+					userName: username.value,
+					userPwd: pwd.value,
+					userinfoName: infoname.value,
+					userinfoIdcard: idcard.value,
+					userinfoTel: phone.value
+				},
+
+				success: function(result) {
+					console.log(result);
+
+					if(result.info == "success") {
+						alert("注册成功");
+						window.location.href = "/Mobile_web/html/login1.html";
+					} else {
+						alert("注册失败");
+						window.location.href = "/Mobile_web/html/register1.html";
+					}
+				}
+
+			})
+		}
+	</script>
+
+</html>

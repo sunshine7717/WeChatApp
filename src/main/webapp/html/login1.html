@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>登陆页面</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<link href="/Mobile_web/css/login1.css" type="text/css" rel="stylesheet">
+<link href="/Mobile_web/css/global.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="login">
+		<div class="login-title">
+			<p>登录</p>
+			<i></i>
+		</div>
+			<div class="login-bar">
+				<ul>
+					<li><img src="/Mobile_web/img/login_user.png"><input type="text"
+						class="text" placeholder="请输入用户名" id="username" /></li>
+					<li><img src="/Mobile_web/img/login_pwd.png"><input
+						type="password" class="psd" placeholder="请输入确认密码" id="pwd" /></li>
+				</ul>
+			</div>
+			<div class="login-btn">
+				<button class="submit" type="button" onclick="login()">登陆</button>
+				<a href="/Mobile_web/html/register1.html">
+					<div class="login-reg">
+						<p>沒有账号，先注册</p>
+					</div>
+				</a>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="/Mobile_web/js/jQuery.js"></script>
+<script type="text/javascript">
+	function login() {
+		var username = document.getElementById("username");
+		var pwd = document.getElementById("pwd");
+		if (username.value == '' || username.value == null) {
+			alert("请输入用户名");
+			return false;
+		} else if (pwd.value == '' || pwd.value == null) {
+			alert("请输入密码");
+			return false;
+		}
+		$.ajax({
+			type : "get",
+			url : "../login",
+			data : {
+				"userName" : username.value,
+				"userPwd" : pwd.value
+			},
+			success : function(result) {
+				console.log(result);
+
+				if (result.info == "success") {
+					alert("登录成功");
+					window.location.href = "/Mobile_web/html/index.html?user.name";
+				} else {
+					alert("登录失败");
+					window.location.href = "/Mobile_web/html/login1.html";
+				}
+			}
+
+		})
+	}
+</script>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,
+target-densitydpi=device-dpi " />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sign_up.css" />
+		<style>
+			*{
+				text-align: left;
+			}
+		</style>
+
+	</head>
+
+	<body id="body">
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-home-filled mui-pull-left" href="javascript:window.history.back()"></a>
+			<h1 class="mui-title">活动预定</h1>
+		</header>
+		<div class="title">
+			<img src="../img/sign_up_title.jpg" alt="" />
+			<div class="titleMaske">
+				<h3>爱呦蛋糕</h3>
+				<p>陕西省宝鸡市爱幼蛋糕<span class="mui-pull-right" style="margin-right: 12px;">Tel：0917-8888888</span></p>
+			</div>
+		</div>
+
+		<ul class="mui-card" style="margin-top: 10px;">
+			<div class="mui-card-footer">
+				<div class="mui-input-row " style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">选择日期<span style="color:red;position: relative; top:2px">*</span>：</label>
+					<input  id="result" placeholder='选择日期时间' data-options='{"value":"2017-10-10 10:10","beginYear":2017,"endYear":2017}' style="padding:0; font-size: 14px; height: auto; width:100%" class="mui-text-left dbtn"/>
+
+				</div>
+			</div>
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">参加人数<span style="color:red;position: relative; top:2px">*</span>：</label>
+					<input id="personCount"  style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="请输入人数" oninput="caculate()">
+				</div>
+			</div>
+
+		</ul>
+
+		<ul class="mui-card" style="margin-top: 10px;">
+
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">姓&emsp;&emsp; 名<span style="color:red;position: relative; top:2px">*</span>：</label>
+					<input id="personName" style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="请输入联系人姓名">
+				</div>
+			</div>
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">联系电话<span style="color:red;position: relative; top:2px">*</span>：</label>
+					<input  id="phoneNumber"style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="中国大陆86+">
+				</div>
+			</div>
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">我的地址<span style="color:red;position: relative; top:2px">*</span>：</label>
+					<input id="address" style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="输入地址，我们将分配离您最近的门店">
+				</div>
+			</div>
+			<div class="mui-card-footer">
+				<div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+					<label style="padding:0;" class="mui-text-left">预定套餐<span style="color:red;position: relative; top:2px">*</span>：</label>
+					<input id='showUserPicker' style="padding:0; font-size: 14px; height: auto; width:100%" type="text" class="mui-text-left advice" placeholder="点击选择">
+				</div>
+			</div>
+
+		</ul>
+		<nav class="mui-bar mui-bar-tab" style="text-align: center; display:flex; justify-content: space-between">
+
+			<a  href="#tabbar-with-contact" style="width: 50%">
+				<h5 class="text-red mui-text-center" style="line-height: 40px;">合计：￥<span style="line-height: 40px" class="totalPrice">00.00</span></h5>
+			</a>
+			<a class=" mui-button mui-badge-primary" id="subPaybtn" style="width: 50%;">
+				<h4 style="color: white;line-height: 40px" class="mui-text-center"  >立即支付</h4>
+			</a>
+
+
+		</nav>
+
+
+	</body>
+	<script src="../js/function.js"></script>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.picker.min.js"></script>
+    <script src="../js/pay.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" charset="utf-8"></script>
+    <script src="../js/jQuery.js"></script>
+	<script>
+		(function($) {
+			$.init();
+			var result = $('#result')[0];
+			var btns = $('.dbtn');
+			btns.each(function(i, btn) {
+				btn.addEventListener('tap', function() {
+					var optionsJson = this.getAttribute('data-options') || '{}';
+					var options = JSON.parse(optionsJson);
+					var id = this.getAttribute('id');
+					var picker = new $.DtPicker(options);
+					picker.show(function(rs) {
+						result.value = rs.text;
+						picker.dispose();
+					});
+				}, false);
+			});
+		})(mui);
+	</script>
+
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+
+				$.ajax({
+					url:"../php/controller/packages.php?type=getAll",
+					type:"get",
+					success:function(data) {
+                        var tempdata = $.parseJSON(data);
+                        //普通示例
+                        var userPicker = new $.PopPicker();
+                        var src = [];
+                        for(var i=0; i<tempdata.length; i++) {
+                            var tempObj = {};
+                            tempObj.value = i;
+                            tempObj.text=tempdata[i].packageName;
+                            tempObj.r_pri = tempdata[i].r_pri;
+                            tempObj.t_pri = tempdata[i].t_pri;
+                            tempObj.info = tempdata[i].info;
+                            src[i] = tempObj;
+                        }
+                        userPicker.setData(src);
+                        var showUserPickerButton = doc.getElementById('showUserPicker');
+                        showUserPickerButton.addEventListener('tap', function(event) {
+                            userPicker.show(function(items) {
+                                showUserPickerButton.value = items[0].text;
+                                showUserPickerButton.r_pri = items[0].r_pri;
+                                showUserPickerButton.t_pri = items[0].t_pri;
+                                alert(items[0].info);
+                                var personNumber = document.querySelector('#personCount').value;
+                                var totalPrice;
+                                if(personNumber >=6 ) {
+                                    totalPrice = items[0].t_pri*personNumber;
+                                } else {
+                                    totalPrice = items[0].r_pri*personNumber;
+                                }
+                                document.querySelector('.totalPrice').innerText = totalPrice;
+//                                switch (items[0].value){
+//                                    case '1':
+//                                        alert("套餐一：制作4寸蛋糕一个，卡通饼干一打，免费品尝其他产品,原价98，优惠价88，团购价68");
+//                                        var personNumber = document.querySelector('#personCount').value;
+////                                var totalPrice = document.querySelector('.totalPrice').value;
+//                                        var totalPrice;
+//                                        if(personNumber >=6 ) {
+//                                            totalPrice = 68*personNumber;
+//                                        } else {
+//                                            totalPrice = 98*personNumber;
+//                                        }
+//                                        document.querySelector('.totalPrice').innerText = totalPrice;
+//                                        break;
+//                                    case '2':
+//                                        alert('套餐二：制作6寸蛋糕一个，卡通饼干一打，免费品尝其他产品,,原价168，优惠价158，团购价138');
+//                                        var personNumber = document.querySelector('#personCount').value;
+////                                var totalPrice = document.querySelector('.totalPrice').value;
+//                                        var totalPrice;
+//                                        if(personNumber >=6 ) {
+//                                            totalPrice = 138*personNumber;
+//                                        } else {
+//                                            totalPrice = 168*personNumber;
+//                                        }
+//                                        document.querySelector('.totalPrice').innerText = totalPrice;
+//                                        break;
+//                                }
+
+                            });
+                        }, false);
+					}
+				});
+
+
+			});
+		})(mui, document);
+	</script>
+	<script type="text/javascript">
+		//日期
+		var date = document.querySelector('.dbtn').value;
+		//人数
+		var personNumber = document.querySelector('#personCount').value;
+		//姓名
+		var personName = document.querySelector('#personName').value;
+		//电话
+		var phoneNumber = document.querySelector('#phoneNumber').value;
+		//地址
+		var address = document.querySelector('#address').value;
+		//套餐
+		var sign_type = document.querySelector('#showUserPicker').value;
+
+        $("#subPaybtn").on('click',function() {
+            subPay();
+        });
+
+		function subPay() {
+
+            var pri = document.querySelector('.totalPrice').innerText;
+            subPayContent(pri);
+		}
+
+        function caculate() {
+            var personNumber = document.querySelector('#personCount').value;
+            var sign_type = document.querySelector('#showUserPicker').value;
+            var totalPrice;
+
+            $.ajax({
+                url: "../php/controller/packages.php?type=getAll",
+                type: "get",
+                success: function (data) {
+                    var tempdata = $.parseJSON(data);
+
+                    for(var i=0; i<tempdata.length; i++) {
+                        if(tempdata[i].packageName == sign_type) {
+                            if(personNumber >=6 ) {
+                                totalPrice = tempdata[i].t_price*personNumber;
+                            } else {
+                                totalPrice = tempdata[i].r_price*personNumber;
+                            }
+                        }
+
+                    }
+                    document.querySelector('.totalPrice').innerText = totalPrice;
+                }
+            });
+
+
+        }
+
+	</script>
+
+</html>

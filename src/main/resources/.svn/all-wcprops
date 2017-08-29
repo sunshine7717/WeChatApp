@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/resources
+END
+info.properties
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/resources/info.properties
+END
+SMVC-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/resources/SMVC-servlet.xml
+END
+Spring-Mybatis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/resources/Spring-Mybatis.xml
+END

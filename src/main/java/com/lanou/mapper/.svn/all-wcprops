@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper
+END
+TbSizeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper/TbSizeMapper.java
+END
+TbUserMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbUserMapper.xml
+END
+TbTypeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper/TbTypeMapper.java
+END
+TbUserinfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbUserinfoMapper.java
+END
+TbCarMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbCarMapper.java
+END
+TbProMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper/TbProMapper.xml
+END
+TbOrderMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbOrderMapper.xml
+END
+TbAdminMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbAdminMapper.xml
+END
+TbAdminMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbAdminMapper.java
+END
+TbOrderMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbOrderMapper.java
+END
+TbProMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper/TbProMapper.java
+END
+TbCarMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbCarMapper.xml
+END
+TbUserinfoMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbUserinfoMapper.xml
+END
+TbTypeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper/TbTypeMapper.xml
+END
+TbUserMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbUserMapper.java
+END
+TbSizeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mobile_web/!svn/ver/7/Mobile_web/src/main/java/com/lanou/mapper/TbSizeMapper.xml
+END
+TbMoneyMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbMoneyMapper.xml
+END
+TbMoneyMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mobile_web/!svn/ver/5/Mobile_web/src/main/java/com/lanou/mapper/TbMoneyMapper.java
+END

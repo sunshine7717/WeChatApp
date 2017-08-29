@@ -1,0 +1,94 @@
+function getAllAddress(){
+	var url = "http://bgaiyaowai.com/wx/b520/php/controller/address.php?type=getMyAddress";
+	ajax(url,function(res){
+		var addressList = document.querySelector('.list');
+		for (var i = 0; i < res.length; i++) {
+			var li = document.createElement('li');
+			li.innerHTML = '<li class="mui-card">'+
+				'<div class="mui-card-header mui-card-media">'+
+					'<div class="mui-media-body mui-text-left" style="margin-left: 0; font-size: 16px;">'+
+						'<span class="resName line-height">' + res[i].r_name + '</span>'+
+						'<span class="phoneNumber-res" style="margin-left: 100px;">' + res[i].phone + '</span>' +
+						'<p class="address-res mui-text-left line-height" >' + res[i].address + '</p>' +
+					'</div>'+
+				'</div>'+
+				'<div class="mui-card-content address-detail">'+
+					'<div  class="mui-input-row mui-radio mui-left">'+
+						'<label >默认地址'+
+						'<input  onclick = "setDefaultAddress('+ res[i].id+')" name="radio1" type="radio" value=""></label>'+
+					'</div>' +
+					'<div style="width: 50%;"class="mui-text-right">'+
+						'<a  onclick="deleteAddress('+ res[i].id +')"><span class="mui-icon mui-icon-close" ></span>删除</a>'+
+					'</div>'+
+					
+				'</div>'+
+
+			'</li>';
+			addressList.appendChild(li);
+		}		
+		
+	});
+}
+ function  setDefaultAddress(id){
+
+	 $.ajax({
+		 url:"http://bgaiyaowai.com/wx/b520/php/controller/address.php?type=modifyMyDefault&id=" + id,
+		 type:'get',
+		 success:function(data) {
+			 window.sessionStorage["localid"] = id;
+		 },
+		 error:function(data) {
+
+		 }
+	 });
+
+ }
+
+function  deleteAddress(id){
+
+	 $.ajax({
+		 url:"http://bgaiyaowai.com/wx/b520/php/controller/address.php?type=deteleAddress&id=" + id,
+		 type:'get',
+		 success:function(data) {
+			window.location.reload();
+		 },
+		 error:function(data) {
+
+		 }
+	 });
+
+ }
+
+
+function getMyOrders(){
+	var url = "http://bgaiyaowai.com/wx/b520/php/controller/orders.php?type=getMyOrders";
+	$.ajax({
+		url:url,
+		type:"get",
+		success:function(data) {
+			var res = $.parseJSON(data);
+			var addressList = document.querySelector('.list');
+			for (var i = 0; i < res.length; i++) {
+				var li = document.createElement('li');
+				li.innerHTML = '<li class="mui-card">'+
+						'<a href="shouhuo.html"><div class="mui-card-header mui-card-media">'+
+						'<div class="mui-media-body mui-text-left" style="margin-left: 0; font-size: 16px;">'+
+						'<span class="resName line-height">' + res[i].p_id + '</span>'+
+						'<span class="phoneNumber-res" style="margin-left: 100px;">' + res[i].r_name + '</span><br>' +
+						'<span class="resName line-height">' + res[i].b_name + '</span>'+
+						'<span class="phoneNumber-res" style="margin-left: 100px;">' + res[i].phone + '</span><br>' +
+						'<p class="address-res mui-text-left line-height" >' + res[i].location + '</p>' +
+						'</div>'+
+						'</div></a>'+
+						'</li>';
+				addressList.appendChild(li);
+			}
+		}
+
+	});
+	ajax(url,function(res){
+
+
+	});
+}
+

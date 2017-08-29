@@ -1,0 +1,17 @@
+package com.lanou.mapper;
+
+import com.lanou.bean.TbUserinfo;
+
+public interface TbUserinfoMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(TbUserinfo record);
+
+    int insertSelective(TbUserinfo record);
+
+    TbUserinfo selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(TbUserinfo record);
+
+    int updateByPrimaryKey(TbUserinfo record);
+}

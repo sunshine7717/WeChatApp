@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title></title>
+    <link rel="stylesheet" href="/Mobile_web/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/icons-extra.css"/>
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.picker.css"/>
+    <link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.poppicker.css"/>
+</head>
+
+<body>
+<!-- 头部 -->
+<header id="header" class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:window.history.back()"></a>
+
+    <h1 class="mui-title mui-text-left">订单确认</h1>
+</header>
+
+<div class="mui-content list">
+    <!--收获地址信息-->
+    <div class="mui-card">
+        <div class="mui-card-header mui-card-media">
+            <div class="mui-media-body mui-text-left" style="margin-left: 0; font-size: 16px;">
+                收获地址
+                <a id="aaaa" class="mui-pull-right mui-btn mui-btn-primary mui-btn-mini " style="position: relative; top:-5px"
+                   href="">管理</a>
+            </div>
+        </div>
+        <div class="mui-card-content address-detail" style="padding:10px 0">
+            <span class="mui-icon mui-icon-location" style="width:10%; font-size: 2rem;"></span>
+            <ul style="width: 80%;">
+                <li>
+                    <h4 class="mui-text-left">收货人 : <span class="resName" id="buy_user"></span><span
+                            class="pohneNumber mui-pull-right" style="margin-right: 5px;" id="buy_user_phone"></span>
+                    </h4>
+                </li>
+                <li class="mui-text-left">
+                    收货地址：<span class="address" id="buy_user_address">请管理您的收货地址</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--商品详情-->
+
+    <div class="mui-card">
+        <!--商品名称-->
+        <div class="mui-card-header mui-card-media">
+            <div class="mui-media-body " style="margin-left: 0; font-size: 16px;">
+                <div class="productName mui-text-left">商品名称:<span id="p_name"></span></div>
+            </div>
+        </div>
+
+        <!--商品详情-->
+        <div class="mui-card-content address-detail" style="padding:10px 0">
+            <img class="pic" style="width: 20%;" src="" id="p_pic"/>
+
+            <ul style="width: 70%;">
+                <li class="descript mui-text-left" id="p_info">
+                    冯绍峰发送到发送到发送 水淀粉水淀粉是
+                </li>
+                <li class="mui-text-right text-red">
+                    ¥<span class=" price" id="p_pri">111.0</span>
+                </li>
+            </ul>
+        </div>
+
+        <!--购买数量-->
+        <div class="mui-card-footer address-detail " style="display: none">
+            <span style="width: 31%;" class="mui-text-left">购买数量</span>
+
+            <ul class="mui-pagination mui-pagination-sm add-flex" style="margin: 0; width: 69%;">
+                <li class="mui-previous">
+                    <a href="#">
+                        +
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="productCount">
+                        1
+                    </a>
+                </li>
+                <li class="mui-next">
+                    <a href="#">
+                        -
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="mui-card-footer">
+            <div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+                <label style="padding:0;" class="mui-text-left"><span style="color:red;position: relative; top:2px"> 选择尺寸：</span></label>
+
+                <div class="size" data-size="">
+
+                </div>
+            </div>
+        </div>
+
+        <!--购买方式-->
+        <div class="mui-card-footer address-detail">
+            <span style="width: 31%;" class="mui-text-left">配送方式</span>
+            <span style="width: 69%;" class="mui-text-right method-way">免邮费</span>
+        </div>
+
+        <!--买家留言-->
+        <div class="mui-card-footer">
+            <div class="mui-input-row" style="display: flex; align-items: center; width:100%">
+                <label style="padding:0;" class="mui-text-left">买家留言</label>
+                <input style="padding:0; font-size: 14px; height: auto; width:100%" type="text"
+                       class="mui-text-left advice" placeholder="选填：对本次交易的说明" id="ext_info" onblur="jiluxinxi()">
+            </div>
+        </div>
+
+        <!--该类商品小计-->
+        <div class="mui-card-footer">
+            <span>共<span class="productCount">1</span>件商品</span>
+            <span>小计: <span class="text-red">¥</span><span class="total-price text-red" id="totle_price">1190.00</span></span>
+        </div>
+    </div>
+
+</div>
+
+<!--nav-->
+<!--<nav class="mui-bar mui-bar-tab" style="text-align: center; display:flex; justify-content: space-between"  >-->
+
+<!--<a  style="width: 50%" href="#tabbar-with-contact">-->
+<!--<h5 class="text-red mui-text-center" style="line-height: 40px;">合计：￥<span style="line-height: 40px" class="totalPrice" id="final_price">00.00</span></h5>-->
+<!--</a>-->
+<!--<a class="mui-tab-item mui-button mui-badge-primary"  style="width: 50%;" >-->
+<!--<h4 style="color: white;line-height: 40px" class="mui-text-center">立即支付</h4>-->
+<!--</a>-->
+<!---->
+
+<!--</nav>-->
+
+<nav class="mui-bar mui-bar-tab" style="text-align: center; display:flex; justify-content: space-between">
+
+    <a href="#tabbar-with-contact" style="width: 50%">
+        <h5 class="text-red mui-text-center" style="line-height: 40px;">合计：￥<span style="line-height: 40px"
+                                                                                  class="totalPrice" id="final_price">00.00</span>
+        </h5>
+    </a>
+    <a class=" mui-button mui-badge-primary" id="buy_now" style="width: 50%;">
+        <h4 style="color: white;line-height: 40px" class="mui-text-center">立即支付</h4>
+    </a>
+</nav>
+
+</body>
+<script src="/Mobile_web/js/function.js"></script>
+<script src="/Mobile_web/js/getinfo.js"></script>
+<script src="/Mobile_web/js/jQuery.js"></script>
+<script src="/Mobile_web/js/pay.js"></script>
+<script src="/Mobile_web/js/mui.min.js"></script>
+<script src="/Mobile_web/js/mui.picker.js"></script>
+<script src="/Mobile_web/js/mui.poppicker.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" charset="utf-8"></script>
+<script>
+    loadData();
+    var str = window.location.href;
+    var temp = str.split("?");
+    var temp1 = temp[1].split("=");
+    var temp2 = temp1[1].split("#");
+    var id = temp2[0];
+    loadProductData(id); 
+    console.log(id)
+    var href="/Mobile_web/master_address?id=" + id;
+	var aaaa=document.getElementById("aaaa");
+	aaaa.href=href;
+</script>
+
+<script>
+
+    var str = window.location.href;
+    var temp = str.split("?");
+    var temp1 = temp[1].split("=");
+    var temp2 = temp1[1].split("#");
+    var proid = temp2[0];
+    console.log(proid)
+    $.ajax({
+        //获取该种类蛋糕的所有尺寸
+        url: "/Mobile_web/selectSizeByProId?proId=" + proid,
+        type: "get",
+        success: function (data) {
+           // var result = $.parseJSON(data);
+            console.log(data)
+
+            //级联示例
+            for (var i = 0; i < data.length; i++) {
+                var newSize = "";							
+                newSize = '<span id=aaa style="display: inline-block;padding: 2px 10px; border: 1px solid #444444; color: #444444; margin-right: 8px;" onclick="chooseSize(this,' + data[i].sizePrice + ','+data[i].id+');" data-num="' + data[i].sizeName + '" >' + data[i].sizeName + '</span>';
+                $(".size").append(newSize);
+                $(".size").attr("data-size", data[0].unit);
+            }
+        }
+    });
+
+    function chooseSize(that, price,id) {
+        $(that).parent().children().css({"border": "1px solid #444444", "color": "#444444"});
+        $(that).css({"border": "1px solid red", "color": "red"});
+        window.sessionStorage.setItem('c_id',id);
+        var index_ = $(that).index();
+        $("#p_pri")[0].innerText = price ;
+        $("#totle_price")[0].innerText = price;
+        $("#final_price")[0].innerText = price;
+        $("#buy_now").off();
+        var addid=window.sessionStorage.getItem("localid")
+        console.log(addid)
+        payAction1(proid,id,addid);
+        console.log(window.sessionStorage.getItem("c_id")+";"+window.sessionStorage.getItem("localid"));
+    }
+
+</script>
+
+</html>

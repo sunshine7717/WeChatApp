@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title></title>
+<link rel="stylesheet" href="/Mobile_web/css/swiper-3.4.2.min.css">
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/icons-extra.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/index.css" />
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"
+			href="javascript:window.history.back()"></a>
+		<h1 class="mui-title mui-text-left">收货地址管理</h1>
+	</header>
+
+	<ul class="mui-content list">
+
+
+
+
+	</ul>
+
+	<!--nav-->
+	<button class=" mui-bar-tab btn mui-btn-danger createNew"
+		style="position: fixed; bottom: 0;">+新建地址</button>
+
+</body>
+<script src="/Mobile_web/js/function.js"></script>
+<script src="/Mobile_web/js/address.js" type="text/javascript" charset="utf-8"></script>
+<script src="/Mobile_web/js/jQuery.js"></script>
+<script src="/Mobile_web/js/getinfo.js"></script>
+<script>
+	var str = window.location.href;
+	var temp = str.split("?");
+	var temp1 = temp[1].split("=");
+	var temp2 = temp1[1].split("#");
+	var id1 = temp2[0];
+	console.log(id1)
+	
+	document.querySelector('.createNew').onclick = function() {
+		window.location.href = "/Mobile_web/html/new_address.html";
+	}
+	getAllAddress();
+	
+	function setDefaultAddress(id) {
+    console.log(id)
+		
+	  window.location.href="/Mobile_web/html/buy_now.html?id=" + id1;  
+
+
+}
+</script>
+
+</html>

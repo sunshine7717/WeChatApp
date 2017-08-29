@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<title></title>
+		<link rel="stylesheet" href="../css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<script src="../js/jQuery.js"></script>
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:window.history.back()"></a>
+			<h1 class="mui-title">成为商家</h1>
+		</header>
+
+		<ul class="mui-content list">
+			<div class="mui-card ">
+				<div class="mui-card-header mui-card-media">
+					<div class="mui-media-body" style="margin-left: 0; font-size: 16px;">
+						完善商家信息
+					</div>
+				</div>
+				<div class="mui-card-content height300" style="padding:0 10px;">
+					<ul>
+                <li>
+                    <input placeholder="请输入真实姓名"  type="text"  class="name">
+                </li>
+                <li class="sfzPhoto">
+                    <input placeholder="请输入身份证号"  type="text"  class="id_card">
+                </li>
+                <li class="sfzPhotor">
+                    <p class="photo">身份证照片
+                        <input  type="file"  class="card_img" >
+                    </p>
+                    <p class="photor">本 人 &nbsp;照 片
+                        <input  type="file" class="photograph" >
+                    </p>
+                </li>
+				<li class="sfzPhotor">
+                    <p class="photo">营业执照
+                        <input class="photoyingye" type="file"  class="card_img" >
+                    </p>    
+                </li>
+                <li>
+                    <input placeholder="请输入银行卡号"  type="text"  class="bank_card" >
+                </li>
+                <li>
+                    <input placeholder="请输入有效联系方式"  type="text"  class="phone">
+                </li>
+				</div>
+				 
+				 <button type="regist"  onclick="regist()">提交</button>
+				
+			</div>
+		</ul>
+	</body>
+	<script src="../js/function.js"></script>	
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	function regist(){
+	var url = window.location.href
+    var id = url.split("=");
+    var openid = id[1];
+    window.sessionStorage["openid"] = openid;
+    //真实姓名判断
+    var realName = document.querySelector('.name').value;
+    //姓名正则
+   // var name = /^[\u4E00-\u9FA5A-Za-z]+$/;
+    //身份证号判断
+    var id_card = document.querySelector('.id_card').value;
+    //身份证正则
+     var card = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;
+    //身份证照片判断
+    var card_img = document.querySelector('.card_img').value;
+    //本人照片判断
+    var photograph = document.querySelector('.photograph').value;
+
+    //营业执照判断
+    var workers = document.querySelector('.photoyingye').value;
+	//验证手机号
+    var phone = document.querySelector('.phone').value;
+    //银行卡号判断
+    var bank_card = document.querySelector('.bank_card').value;
+	if(realName == "" || id_card == "" || card_img == "" || photograph == "" || bank_card == "" || phone == ""){
+       alert("请填写完整");
+	   }else{
+	    $.ajax({
+		url:"http://bgaiyaowai.com/wx/b520/php/controller/bussness.php?type=tianjia&name="+realName+"&id_card="+id_card+"&photo="+card_img+"&myphoto="+photograph+"&yingyephoto="+workers+"&phone="+phone+"&bank_card="+bank_card+"&openid="+openid+"",
+            type:"get",
+			 success:function(data) {
+			//	alert(realName);
+			  alert('您已经提交申请，请尽快联系管理人员，进行后边的操作。');
+			//  alert('以下信息请妥善保存：\n后台管理地址：http://bgaiyaowai.com/wx/b520/ayw \n用户名:'+supplier+" \n 密码："+openid+);
+			  window.location.href="personal_center.html"; 
+			  }
+		});
+	   }
+	 
+	 } 
+	</script>
+
+</html>

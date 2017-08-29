@@ -1,0 +1,87 @@
+package com.lanou.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.lanou.bean.TbPro;
+import com.lanou.bean.TbType;
+import com.lanou.service_wj.UService;
+
+@Controller
+public class MainController_WJ {
+
+	@Resource
+	UService service;
+
+	@RequestMapping(value = "/selectAllPro")
+	@ResponseBody
+	public List<TbPro> selectUrl() {
+
+		return service.selectAllPro();
+	}
+
+	@RequestMapping(value = "/selectType")
+	@ResponseBody
+	public List<TbType> selectType() {
+
+		return service.selectAllType();
+	}
+
+	@RequestMapping(value = "/selectPro")
+	@ResponseBody
+	public List<Object> selectProById(@RequestParam("id") Integer id ) {
+
+		return service.selectProById(id);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*------------------跳转方法------------------*/
+	@RequestMapping(value = "/products")
+	public String frontPage() {
+		return "products";
+	}
+
+	@RequestMapping(value = "/index")
+	public String frontPage1() {
+		return "index";
+	}
+
+	@RequestMapping(value = "/personal_center")
+	public String frontPage2() {
+		return "personal_center";
+	}
+
+	@RequestMapping(value = "/descript")
+	public String frontPage3() {
+		return "descript";
+	}
+
+	@RequestMapping(value = "/myorders")
+	public String frontPage4() {
+		return "myorders";
+	}
+}

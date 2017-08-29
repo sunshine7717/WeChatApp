@@ -1,0 +1,17 @@
+package com.lanou.service_wj;
+
+import java.util.List;
+import java.util.Map;
+
+import com.lanou.bean.TbPro;
+import com.lanou.bean.TbType;
+
+
+public interface IUService {
+
+	public List<TbPro> selectAllPro();
+	
+	public List<TbType> selectAllType();
+	
+	public List<Object> selectProById(Integer id);
+}

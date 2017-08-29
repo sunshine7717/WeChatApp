@@ -1,0 +1,39 @@
+*{
+  margin: 0 ;
+  padding: 0 ;
+  line-height: 20px;
+  text-align:center;
+}
+ul{
+	list-style: none;
+}
+a{
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+}
+.header{
+	justify-content: flex-start;
+	align-items: center;
+}
+.header a{
+	width: auto;
+}
+.header img{
+	width: 100px;
+	padding-right: 10px;
+}
+.header h4{
+	padding-left: 10px;
+	border-left: 1px solid ;
+}
+.flexFlow{
+	display: flex;
+	justify-content:flex-start;
+	flex-flow:column wrap;
+	/*flex-flow: column;*/
+}
+.flexFlow span{
+	width: 100%;
+	text-align: left;
+}

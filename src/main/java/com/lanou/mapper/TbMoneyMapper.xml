@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.TbMoneyMapper">
+  <resultMap id="BaseResultMap" type="com.lanou.bean.TbMoney">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="money_num" jdbcType="VARCHAR" property="moneyNum" />
+    <result column="money_time" jdbcType="TIMESTAMP" property="moneyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, money_num, money_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_money
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_money
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanou.bean.TbMoney">
+    insert into tb_money (id, money_num, money_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{moneyNum,jdbcType=VARCHAR}, #{moneyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lanou.bean.TbMoney">
+    insert into tb_money
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="moneyNum != null">
+        money_num,
+      </if>
+      <if test="moneyTime != null">
+        money_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="moneyNum != null">
+        #{moneyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyTime != null">
+        #{moneyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lanou.bean.TbMoney">
+    update tb_money
+    <set>
+      <if test="moneyNum != null">
+        money_num = #{moneyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyTime != null">
+        money_time = #{moneyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lanou.bean.TbMoney">
+    update tb_money
+    set money_num = #{moneyNum,jdbcType=VARCHAR},
+      money_time = #{moneyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

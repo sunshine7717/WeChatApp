@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title></title>
+<link rel="stylesheet" href="/Mobile_web/css/swiper-3.4.2.min.css">
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/icons-extra.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/index.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/app.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.picker.css" />
+<link rel="stylesheet" type="text/css" href="/Mobile_web/css/mui.poppicker.css" />
+</head>
+
+<body>
+	<!-- 头部 -->
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"
+			href="javascript:window.history.back()"></a>
+
+		<h1 class="mui-title mui-text-left">新建地址</h1>
+	</header>
+
+	<ul class="mui-card" style="margin-top: 80px;">
+		<div class="mui-card-footer">
+			<div class="mui-input-row"
+				style="display: flex; align-items: center; width: 100%">
+				<label style="padding: 0;" class="mui-text-left">收货人：</label> <input
+					style="padding: 0; font-size: 14px; height: auto; width: 100%"
+					type="text" class="mui-text-left resName" placeholder="姓名">
+			</div>
+		</div>
+		<div class="mui-card-footer">
+			<div class="mui-input-row"
+				style="display: flex; align-items: center; width: 100%">
+				<label style="padding: 0;" class="mui-text-left">手机号码：</label> <input
+					style="padding: 0; font-size: 14px; height: auto; width: 100%"
+					type="text" class="mui-text-left phone" placeholder="中国大陆86+">
+			</div>
+		</div>
+		<div class="mui-card-footer">
+			<div class="mui-input-row"
+				style="display: flex; align-items: center; width: 100%">
+				<label style="padding: 0;" class="mui-text-left">详细地址：</label> <input
+					class="adDetail"
+					style="padding: 0; font-size: 14px; height: auto; width: 100%"
+					type="text" class="mui-text-left advice"
+					placeholder="例如：唐兴路10号蓝鸥科技有限公司" onchange="">
+			</div>
+		</div>
+
+	</ul>
+
+	<!--nav-->
+	<button id="btn" class="save mui-bar-tab btn mui-btn-grey">保存
+	</button>
+
+
+</body>
+<script src="/Mobile_web/js/function.js"></script>
+<script src="/Mobile_web/js/mui.min.js"></script>
+<!--<script src="../js/mui.picker.min.js"></script>-->
+<script src="/Mobile_web/js/mui.picker.js"></script>
+<script src="/Mobile_web/js/mui.poppicker.js"></script>
+<script src="/Mobile_web/js/jQuery.js"></script>
+<script src="/Mobile_web/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	/*     var addressList = null;
+	 (function ($, doc) {
+	 $.init();
+	 $.ready(function () {
+
+	 //级联示例
+	 var cityPicker3 = new $.PopPicker({
+	 layer: 3
+	 });
+	 cityPicker3.setData(cityData3);
+	 var showCityPickerButton = doc.getElementById('showCityPicker3');
+	 var cityResult3 = doc.getElementById('cityResult3');
+	 showCityPickerButton.addEventListener('tap', function (event) {
+	 cityPicker3.show(function (items) {
+	 cityResult3.value = (items[0] || {}).text + "" + (items[1] || {}).text + "" + (items[2] || {}).text;
+	 addressList = items;
+	 saveAddress();
+	 });
+	 }, false);
+	 });
+	 })(mui, document); */
+	/* function saveAddress() { */
+
+	var save = document.querySelector('#btn');
+	save.className = "save mui-bar-tab btn mui-btn-primary";
+	save.onclick = function() {
+
+		/*  if(!validate()) {
+		     return;
+		 } */
+		//姓名
+		var name = document.querySelector('.resName').value;
+		//手机号码
+		var phone = document.querySelector('.phone').value;
+		//地址
+		var address = document.querySelector('.adDetail').value;
+
+		//var url = "insertAddress?addressInfo=" + address + "&addressTel=" + phone + "&addressName=" + name;
+
+		$.ajax({
+			url : "/Mobile_web/insertAddress?addressInfo=" + address + "&addressTel="
+					+ phone + "&addressName=" + name,
+			type : "get",
+			success : function(data) {
+				if (data.state == 1) {
+					alert(data.data)
+					window.history.back();
+				} else if (data.state == 0) {
+					alert(data.data)
+				}
+
+			}
+		})
+
+		/*   //ajax请求地址
+		  ajax(url, function (res) {
+		  	console.log(res)
+		     // window.location.href = "master_address";
+		  }); */
+	}
+	/*   } */
+
+	/*    function validate() {
+	       var flag = false;
+	       //姓名
+	       var name = document.querySelector('.resName').value;
+	       //手机号码
+	       var phone = document.querySelector('.phone').value;
+	       //地址
+	       var address = document.querySelector('.zone').value + document.querySelector('.adDetail').value;
+	       if(name == "" || phone == "" || address == "") {
+	           alert("请填充完整信息");
+	           return false;
+	       } else {
+	           $.ajax({
+	               url:"http://bgaiyaowai.com/wx/b520/php/controller/address.php?type=valide&local=" + addressList[2].text,
+	               async: false,
+	               type:"get",
+	               success:function(data) {
+	                   if(data == 1) {
+	                       flag = true;
+	                   } else {
+	                       alert('您所选择的地址没有供货商，目前不支持通过平台购买');
+	                   }
+
+	               }
+	           });
+	           return flag;
+	       }
+	   } */
+</script>
+</html>
